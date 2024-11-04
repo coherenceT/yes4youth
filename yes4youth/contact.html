@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/navigation.js" defer></script>
+    <link rel="stylesheet" href="css/navigation.css">
+    <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your User ID
+        (function(){
+            emailjs.init("HrL3Qoc4WhBhhfhCW_zAS"); // Your EmailJS User ID
+        })();
+
+        // Send email function
+        function sendEmail(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value; // Get the message content
+
+            // Send email using EmailJS
+            emailjs.send("service_g9x8676", "template_qdm3fsr", { // Your Service ID and Template ID
+                name: name,
+                email: email,
+                message: message // Include the message in the email
+            })
+            .then(function(response) {
+                alert("Welcome message sent successfully!");
+            }, function(error) {
+                alert("Failed to send the welcome message. Please try again.");
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="stories.html">Success Stories</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h1>Contact Us</h1>
+        <p>Have questions or want to get involved? Reach out to us today!</p>
+        <form onsubmit="sendEmail(event)">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <h2>Our Location</h2>
+        <iframe 
+            src="https://www.google.com/maps/embed/v1/place?q=63+Roberts+Avenue,+Kensington,+Johannesburg,+2101&key=AIzaSyATJHWg4P9d9yItlg7op7dzwT82IKOutKA" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"></iframe>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Yes4Youth. All rights reserved.</p>
+        <div class="social-media">
+            <a href="https://web.facebook.com/Yes4YouthZA/?_rdc=1&_rdr" target="_blank">
+                <img src="images/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://x.com/Yes4YouthZA?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
+                <img src="images/twitter-icon.png" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com/yes4youth/" target="_blank">
+                <img src="images/instagram-icon.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
